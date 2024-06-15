@@ -1,0 +1,56 @@
+button{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar button {
+    display: block;
+    height: 40px;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color: #87cefa;
+    border: 1px solid #87cefa;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.sidebar button:hover {
+    background-color: #00bfff;
+}
+.sidebar input[type="text"] {
+    width: calc(75% - 10px);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    height: 38px
+}
+.sidebar button.search {
+    width: calc(25% - 10px);
+    border: 1px solid #87cefa;
+    border-radius: 4px;
+    background-color: #87cefa;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    height: 40px;
+}
+.sidebar button.search:hover {
+    background-color: #00bfff;
+}
+.content-placeholder {
+    margin-top: 20px;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f0f8ff;
+    overflow-y: scroll;
+    padding: 10px;
+    color: #87cefa;
+    font-size: 1.2em;
+    text-align: center;
+}

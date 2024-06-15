@@ -1,0 +1,38 @@
+button{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.container {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 2000px;
+    height: 90%;
+    max-height: 1000px;	
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+app-menu {
+    width: 25%;
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    background-color: #e6f7ff;
+    display: flex;
+    flex-direction: column;
+}
+app-section{
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: #e6f7ff;
+}
+.main {
+    display: flex;
+    flex: 1;
+}
+
+

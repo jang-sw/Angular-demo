@@ -1,0 +1,8 @@
+select {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    font-size: 1em;
+}

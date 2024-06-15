@@ -1,0 +1,34 @@
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #e6f7ff;
+}
+.main-content .main-container {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f0f8ff;
+    overflow-y: scroll;
+    height: 100%;
+}
+.main-content button {
+    padding: 12px 24px;
+    width: 150px;
+    font-size: 30px;
+    height: 94px;
+    background-color: #87cefa;
+    border: 1px solid #87cefa;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+.main-content button:hover {
+    background-color: #00bfff;
+}

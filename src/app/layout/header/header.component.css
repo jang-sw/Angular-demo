@@ -1,0 +1,22 @@
+.header {
+    background-color: #87cefa;
+    padding: 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+}
+.header img {
+    height: 50px;
+}
+.header h1 {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+button{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
