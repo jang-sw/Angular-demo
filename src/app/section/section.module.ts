@@ -6,6 +6,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { BoardComponent } from './board/board.component';
 import { DetailComponent } from './detail/detail.component';
+import { JoinModalComponent } from '../modal/join-modal/join-modal.component';
+import { LoginModalComponent } from '../modal/login-modal/login-modal.component';
 
 const routes: Routes = [
   {
@@ -30,6 +32,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     MainComponent,
+    JoinModalComponent,
+    LoginModalComponent,
     SectionComponent,
     AboutComponent,
     DetailComponent,
@@ -39,8 +43,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
   ],
-  exports: [
-    
+  exports: [ 
     SectionComponent,
     RouterModule,
   ]

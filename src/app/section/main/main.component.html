@@ -1,6 +1,8 @@
 <div class="main-content">
     <div class="button-container">
-        <button class="notranslate" id="login-btn">Login</button>
-        <button class="notranslate" id="join-btn">Join</button>
+        <button class="notranslate" id="login-btn" (click)="toggleLoginModal()">Login</button>
+        <button class="notranslate" id="join-btn"  (click)="toggleJoinModal()">Join</button>
     </div>
+    <app-join-modal *ngIf="joinModalStatus" (closeEvent)="toggleJoinModal()"></app-join-modal>
+    <app-login-modal *ngIf="loginModalStatus" (closeEvent)="toggleLoginModal()"></app-login-modal>
 </div>

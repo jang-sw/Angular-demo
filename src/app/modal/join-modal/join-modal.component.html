@@ -1,0 +1,16 @@
+<div class="modal notranslate">
+  <div class="modal-header">
+      <h2>{{title}}</h2>
+      <button class="close" (click)="closeModal()">✖</button>
+  </div>
+  <div class="modal-body">
+      <button (click)="walletConnect()">Wallet Connect</button>
+      <label for="username">{{nicknameInput}}</label>
+      <input type="text" id="username" name="username">
+      <label for="password">{{passwordInput}}</label>
+      <input type="password" id="password" name="password">
+      <button (click)="submit()">{{submitBtn}}</button>
+  </div>
+</div>
+
+<div class="background"></div>

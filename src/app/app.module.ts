@@ -7,13 +7,14 @@ import { TranslateComponent } from './translate/translate.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { MenuComponent } from './layout/menu/menu.component';
 import { SectionModule } from './section/section.module';
+import { LoginModalComponent } from './modal/login-modal/login-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TranslateComponent,
     HeaderComponent,
-    MenuComponent
+    MenuComponent,
   ],
   imports: [
     AppRoutingModule,
