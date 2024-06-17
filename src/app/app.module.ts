@@ -8,6 +8,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { MenuComponent } from './layout/menu/menu.component';
 import { SectionModule } from './section/section.module';
 import { LoginModalComponent } from './modal/login-modal/login-modal.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { LoginModalComponent } from './modal/login-modal/login-modal.component';
   ],
   imports: [
     AppRoutingModule,
+    FormsModule,
     BrowserModule,
     SectionModule
   ],

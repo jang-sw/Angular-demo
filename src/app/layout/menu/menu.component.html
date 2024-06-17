@@ -1,10 +1,10 @@
 <div class="sidebar notranslate">
     <button id="about-btn" (click)="goPage('about')">About</button>
-    <button id="notice-btn" (click)="goPageWithType('board', 'notice')">공지사항</button>
-    <button id="openForum-btn" (click)="goPageWithType('board', 'free')">자유게시판</button>
+    <button id="notice-btn" (click)="goPageWithType('board', 'notice')">{{notice_btn}}</button>
+    <button id="openForum-btn" (click)="goPageWithType('board', 'free')">{{openForum_btn}}</button>
     <div style="display: flex; margin-top: 20px;">
         <input id="search-input" type="text">
-        <button id="search" class="search">검색</button>
+        <button id="search" class="search">{{search}}</button>
     </div>
     <div class="content-placeholder">
         <p>Placeholder for additional content</p>

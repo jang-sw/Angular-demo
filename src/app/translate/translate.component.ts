@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { GlobalService } from '../services/global.service';
 
 @Component({
   selector: 'app-translate',
@@ -6,10 +8,10 @@ import { Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges } fro
   styleUrl: './translate.component.css',
 })
 export class TranslateComponent implements OnInit {
+ 
+  language:string = 'ko';
 
-  constructor(){
-
-  }
+  constructor(private globalService: GlobalService){ }
 
   ngOnInit(): void {
     this.loadGoogleTranslate();
@@ -23,13 +25,23 @@ export class TranslateComponent implements OnInit {
     document.head.appendChild(script);
 
     (window as any).googleTranslateElementInit = this.googleTranslateElementInit;
+
+    if(!sessionStorage.getItem("lang") || sessionStorage.getItem("lang") == 'ko'){
+      this.globalService.changeLanguage('ko')
+    }else if(sessionStorage.getItem("lang") == 'ja'){
+      this.globalService.changeLanguage('ja')
+    }else{
+      this.globalService.changeLanguage('en')
+    }
+    console.log(this.globalService.getLanguage());
+    this.language = this.globalService.getLanguage()
+
   }
 
   googleTranslateElementInit(): void {
-    new (window as any).google.translate.TranslateElement({
-      pageLanguage: !sessionStorage.getItem("lang") ? 'ko' : sessionStorage.getItem("lang") ,
-      includedLanguages: 'en,ja,ko'
-    }, 'google_translate_element');
+    new (window as any).google.translate.TranslateElement(
+      {pageLanguage:  'ko' ,includedLanguages: 'en,ja,ko'}
+      , 'google_translate_element');
   }
 
   translate(event: any){
@@ -42,7 +54,10 @@ export class TranslateComponent implements OnInit {
     }
     gtcombo.value = tolang; 
     gtcombo.dispatchEvent(new Event('change')); 
-
+    this.globalService.changeLanguage(tolang);
+    this.language = tolang;
     return false;
   }
+
+  
 }
