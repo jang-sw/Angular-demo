@@ -8,18 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  notice_btn;
-  openForum_btn;
-  search;
-  language: any = 'ko'
 
   constructor(){
-    this.language = sessionStorage.getItem('lang') == null ? 'ko' : sessionStorage.getItem('lang');
-    
-    this.notice_btn = this.language == 'ko' ? '공지사항' : this.language == 'en' ? 'Notice' : 'お知らせ';
-    this.openForum_btn = this.language == 'ko' ? '자유게시판' : this.language == 'en' ? 'Open Forum' : 'フリーボード'
-    this.search = this.language == 'ko' ? '검색' : this.language == 'en' ? 'Search' : '検索'
-
+  
   }
   
   

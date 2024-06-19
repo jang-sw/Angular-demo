@@ -8,10 +8,12 @@ import { BoardComponent } from './board/board.component';
 import { DetailComponent } from './detail/detail.component';
 import { JoinModalComponent } from '../modal/join-modal/join-modal.component';
 import { LoginModalComponent } from '../modal/login-modal/login-modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MyPageComponent } from './my-page/my-page.component';
 
 const routes: Routes = [
   {
-    path:'',
+    path:'login',
     pathMatch: 'full',
     component: MainComponent,
   },
@@ -25,7 +27,11 @@ const routes: Routes = [
     pathMatch: 'full',
     component: BoardComponent,
   },
-  
+  {
+    path:'',
+    pathMatch: 'full',
+    component: MyPageComponent,
+  },
 ];
 
 
@@ -38,10 +44,13 @@ const routes: Routes = [
     AboutComponent,
     DetailComponent,
     BoardComponent,
+    MyPageComponent,
   ],
   imports: [
+    ReactiveFormsModule,
     CommonModule,
     RouterModule.forChild(routes),
+    
   ],
   exports: [ 
     SectionComponent,

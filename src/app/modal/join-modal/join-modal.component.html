@@ -3,14 +3,17 @@
       <h2>{{title}}</h2>
       <button class="close" (click)="closeModal()">✖</button>
   </div>
-  <div class="modal-body">
-      <button (click)="walletConnect()">Wallet Connect</button>
+  <form class="modal-body"  [formGroup]="signupForm" (ngSubmit)="submit()" >
+      <button type="button" (click)="walletConnect()" [disabled]="isConnecting" >{{wallet}}</button>
       <label for="username">{{nicknameInput}}</label>
-      <input type="text" id="username" name="username">
-      <label for="password">{{passwordInput}}</label>
-      <input type="password" id="password" name="password">
-      <button (click)="submit()">{{submitBtn}}</button>
-  </div>
+      <input type="text" id="nickname" formControlName="nickname" >
+      <label for="password">{{passwordInput}}</label> 
+      <input type="password" id="password" formControlName="password">
+      <label for="password">{{passwordChkInput}}</label> 
+      <input type="password" id="passwordChk" formControlName="passwordChk">
+      
+      <button type="submit" [disabled]="isJoining" >{{submitBtn}}</button>
+  </form>
 </div>
 
 <div class="background"></div>

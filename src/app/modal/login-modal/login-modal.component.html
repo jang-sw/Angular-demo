@@ -3,14 +3,14 @@
         <h2>{{title}}</h2>
         <button class="close" (click)="closeModal()">✖</button>
     </div>
-    <div class="modal-body">
-        <button>Wallet Connect</button>
-        <label for="username">{{nicknameInput}}</label>
-        <input type="text" id="username" name="username" readonly>
+    <form class="modal-body" [formGroup]="signinForm" (ngSubmit)="submit()" >
+        <button type="button" (click)="walletConnect()" [disabled]="isConnecting" >{{wallet}}</button>
+        <label for="nickname">{{nicknameInput}}</label>
+        <input type="text" id="nickname" name="nickname" readonly [value]="nickname">
         <label for="password">{{passwordInput}}</label>
-        <input type="password" id="password" name="password">
-        <button>{{submitBtn}}</button>
-    </div>
+        <input type="password" id="password" formControlName="password">
+        <button type="submit"  [disabled]="isSignining">{{submitBtn}}</button>
+    </form>
   </div>
   
   <div class="background"></div>

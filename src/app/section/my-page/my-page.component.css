@@ -1,0 +1,47 @@
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #e6f7ff;
+    overflow-y: auto;
+}
+.main-content h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+.wallet-info, .nickname, .main-nft {
+    margin-bottom: 20px;
+}
+.wallet-info, .nickname {
+    font-size: 1.2em;
+}
+.main-nft {
+    height: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f0f8ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    color: #87cefa;
+}
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+.actions button {
+    padding: 10px 15px;
+    background-color: #87cefa;
+    border: 1px solid #87cefa;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.actions button:hover {
+    background-color: #00bfff;
+}

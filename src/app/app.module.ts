@@ -8,7 +8,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { MenuComponent } from './layout/menu/menu.component';
 import { SectionModule } from './section/section.module';
 import { LoginModalComponent } from './modal/login-modal/login-modal.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,9 +19,10 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule,
     BrowserModule,
-    SectionModule
+    SectionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

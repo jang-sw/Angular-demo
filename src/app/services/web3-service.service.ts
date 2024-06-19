@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 import Web3 from 'web3';
 import { BehaviorSubject } from 'rxjs';
-
+import swal from 'sweetalert2';
+import { GlobalService } from './global.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Web3ServiceService {
   private web3: Web3 | undefined;
-  private account = new BehaviorSubject<string | undefined>(undefined);
-  public account$ = this.account.asObservable();
+  account = new BehaviorSubject<string | undefined>(undefined);
+  account$ = this.account.asObservable();
+  sign = '';
 
-  constructor() {
-   
+  constructor(private globalService : GlobalService) {
   }
 
   async loadMetaMask() {
@@ -23,35 +24,42 @@ export class Web3ServiceService {
         const accounts = await this.web3.eth.getAccounts();
         this.account.next(accounts[0]);
         console.log(accounts[0]);
-        this.doSign(accounts[0])
+        return 1;
       } catch (error) {
         console.error('User denied account access', error);
+        return -1;
       }
     } else if (window.web3) {
       this.web3 = new Web3(window.web3.currentProvider);
       const accounts = await this.web3.eth.getAccounts();
       this.account.next(accounts[0]);
+      return 1;
     } else {
-      console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+      await swal.fire({
+        html: '<span class="notranslate">Please install MetaMask first.</span>',
+        icon: 'warning',
+      })
+      window.open('https://metamask.io/download/')
+      return -1;
     }
   }
 
   getWeb3(): Web3 | undefined {
     return this.web3;
   }
-  getShortAddress(address:string){
-		return address.slice(0, 3) + "..." + address.slice(address.length - 4, 4)
+  getShortAddress(address: string){
+		return address.substring(0, 3) + "..." + address.substring(address.length - 4, address.length )
 	}
   async doSign(address: string){
     let now = new Date().getTime().toString(); 
     return await window.ethereum.request({
         "method": "personal_sign",
         "params": [
-            `Sign in to the Kyou Create Net .\n\ntimestamp: ${now}\n\naddress: ${(address.substring(0, 3) + "..." + address.substring(address.length - 4, address.length ))}`,address
+            `Sign in to the Kyou Create Net .\n\ntimestamp: ${now}\n\naddress: ${this.getShortAddress(address)}`,address
         ]
       }).then((res: any) => {
-        console.log(res)
-        return {'hash': res, 'ts': now};
+        this.sign = res;
+        return 1;
       }).catch((error: any) => {
         if (error.code === 4001) {
             console.log("the user doesn't want to change the network!")
