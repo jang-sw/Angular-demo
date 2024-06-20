@@ -38,9 +38,49 @@ th {
     border-radius: 4px;
     color: #fff;
     cursor: pointer;
-    
     transition: background-color 0.3s;
 }
 .pagination button:hover {
+    background-color: #00bfff;
+}
+input[type="text"] {
+    width: calc(65% - 10px);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    height: 28px
+}
+.search-btn {
+    width: calc(20% - 10px);
+    border: 1px solid #87cefa;
+    border-radius: 4px;
+    background-color: #87cefa;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    height: 30px;
+}
+.search-btn:hover {
+    background-color: #00bfff;
+}
+.search-select{
+    width: calc(15% - 10px);
+    margin-right: 10px;
+    border-radius: 4px;
+    border-color: #ccc;
+}
+.create-btn{
+    float:right;
+    width: 80px;
+    margin-top: 5px;
+    background-color: #87cefa;
+    border: 1px solid #87cefa;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.create-btn:hover {
     background-color: #00bfff;
 }

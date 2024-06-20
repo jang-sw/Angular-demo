@@ -20,7 +20,9 @@ export class SessionCheckService {
     let userInfo = sessionStorage.getItem('userInfo')
     if(!token || !userInfo ){
       this.pageToggleService.goPage('/login')
+      return;
     }
+    
     if(!this.web3Service.account?.value){
       await this.web3Service.loadMetaMask();
     }
@@ -46,12 +48,15 @@ export class SessionCheckService {
           console.log('ok')
         }else{
           this.pageToggleService.goPage(target)
+          return;
         }
       }else{
         this.pageToggleService.goPage('/login')
+        return;
       }
     }).catch(async (err) =>{
         this.pageToggleService.goPage('/login')
+        return;
     })
    }
 }

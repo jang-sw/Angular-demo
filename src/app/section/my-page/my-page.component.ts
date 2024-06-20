@@ -17,7 +17,7 @@ export class MyPageComponent implements OnInit{
   nickname = '...';
   wallet = '...........';
   changeBtn = '';
-  constructor(private sessionCheckService: SessionCheckService, private globalService: GlobalService, private web3ServiceService: Web3ServiceService){
+  constructor(private pageToggleService: PageToggleService ,private sessionCheckService: SessionCheckService, private globalService: GlobalService, private web3ServiceService: Web3ServiceService){
     let language = globalService.getLanguage();
     this.serverUrl = conf.server;
     this.changeBtn = language == 'ko' ? '변경' : language == 'ja' ? '変更' : 'Change'
@@ -34,4 +34,10 @@ export class MyPageComponent implements OnInit{
       this.changeBtn = language == 'ko' ? '변경' : language == 'ja' ? '変更' : 'Change'
     });
   }
+  logout(){
+    sessionStorage.removeItem('token')
+    sessionStorage.removeItem('userInfo')
+    this.pageToggleService.goPage('/login')
+  }
+  
 }

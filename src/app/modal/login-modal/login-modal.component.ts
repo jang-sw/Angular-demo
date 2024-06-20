@@ -6,6 +6,7 @@ import axios from 'axios';
 import conf from '../../../conf/conf.json'
 import qs from 'qs';
 import { GlobalService } from '../../services/global.service';
+import { PageToggleService } from '../../services/page-toggle.service';
 
 @Component({
   selector: 'app-login-modal',
@@ -26,7 +27,7 @@ export class LoginModalComponent implements OnInit{
 
   @Output() closeEvent = new EventEmitter()
 
-  constructor(private element: ElementRef, private web3Service: Web3ServiceService, private fb: FormBuilder, private globalService: GlobalService) {
+  constructor(private pageToggleService: PageToggleService ,private element: ElementRef, private web3Service: Web3ServiceService, private fb: FormBuilder, private globalService: GlobalService) {
     this.serverUrl = conf.server;
     let lang: any = !sessionStorage.getItem('lang') ? 'ko' : sessionStorage.getItem('lang');
     this.title = lang == 'ko' ? '로그인' : lang == 'en' ? 'Sign In' : 'ログイン'
@@ -89,7 +90,9 @@ export class LoginModalComponent implements OnInit{
             main: res.data.data.main,
             auth: res.data.data.auth,
           }));
+
           this.closeEvent.emit()
+          this.pageToggleService.goPage('/')
         }
       } else {
         await swal.fire({

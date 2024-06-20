@@ -17,16 +17,19 @@
 .wallet-info, .nickname {
     font-size: 1.2em;
 }
-.main-nft {
-    height: 300px;
+.info {
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #f0f8ff;
-    display: flex;
+    text-align: center;
     justify-content: center;
     align-items: center;
     font-size: 1.2em;
     color: #87cefa;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 150px;
+    padding-bottom: 150px;
 }
 .actions {
     display: flex;

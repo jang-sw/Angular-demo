@@ -1,17 +1,13 @@
 <div class="main-content notranslate">
     <div class="actions">
-        <button>Logout</button>
+        <button (click)="logout()">Logout</button>
     </div>
-    <div class="wallet-info">
-        <strong>Wallet Address:</strong> {{wallet}}
-    </div>
-    <div class="nickname">
-        <strong>Nickname:</strong> {{nickname}}
-    </div>
-    <div class="main-nft">
-        Main NFT
-    </div>
-    <div class="actions">
-        <button>{{changeBtn}}</button>
+    <div class="info">
+        <div class="wallet-info">
+            <strong>Wallet Address:</strong> {{wallet}}
+        </div>
+        <div class="nickname">
+            <strong>Nickname:</strong> {{nickname}}
+        </div>
     </div>
 </div>

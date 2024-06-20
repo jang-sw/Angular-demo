@@ -17,7 +17,13 @@ export class MainComponent {
   }
 
   ngOnInit(): void {
-    this.sessionCheckService.sessionCheck('/');
+    let token = sessionStorage.getItem('token')
+    let userInfo = sessionStorage.getItem('userInfo')
+    
+    if(token && userInfo ){
+      this.sessionCheckService.sessionCheck('/');
+    }
+    
   }
 
   toggleJoinModal() {

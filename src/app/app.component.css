@@ -11,7 +11,7 @@ button{
     flex-direction: column;
     width: 90%;
     max-width: 2000px;
-    height: 90%;
+    height: 95%;
     max-height: 1000px;	
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

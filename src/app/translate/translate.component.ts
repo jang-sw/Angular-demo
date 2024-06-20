@@ -11,7 +11,11 @@ export class TranslateComponent implements OnInit {
  
   language:string = 'ko';
 
-  constructor(private globalService: GlobalService){ }
+ 
+
+  constructor(private globalService: GlobalService){ 
+
+  }
 
   ngOnInit(): void {
     this.loadGoogleTranslate();
@@ -46,6 +50,7 @@ export class TranslateComponent implements OnInit {
 
   translate(event: any){
     const tolang = event.target.value;
+   
     sessionStorage.setItem("lang", tolang);    
 		const gtcombo: any = document.querySelector('.goog-te-combo');
     if (gtcombo == null) {
@@ -58,6 +63,5 @@ export class TranslateComponent implements OnInit {
     this.language = tolang;
     return false;
   }
-
   
 }

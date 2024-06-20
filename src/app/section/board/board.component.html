@@ -1,5 +1,15 @@
 <div class="main-content">
-    <h2 style="margin: 0 0 5px 0px;" class="notranslate" id="board-title">{{boardTitle}}</h2>
+    <h2 style="margin: 0 0 20px 0px;" class="notranslate" id="board-title">{{boardTitle}}</h2>
+    <div class="notranslate" style="display: flex;  margin-bottom: 10px;">
+        <select class="search-select">
+            <option *ngIf="(bordType != 'notice')">작성자</option>
+            <option>제목</option>
+            <option>내용</option>
+        </select>
+        <input type="text"/>
+        <button class="search-btn">SEARCH</button>
+    </div>
+    
     <table>
         <thead>
             <tr class="notranslate">
@@ -50,6 +60,9 @@
             </tr>
         </tbody>
     </table>
+    <div>
+        <button *ngIf="canCreate" class="create-btn">작성</button>
+    </div>   
     <div class="pagination notranslate">
         <button>Prev</button>
         <button>1</button>
@@ -57,4 +70,5 @@
         <button>3</button>
         <button>Next</button>
     </div>
+    
 </div>

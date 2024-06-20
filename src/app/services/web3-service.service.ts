@@ -3,6 +3,7 @@ import Web3 from 'web3';
 import { BehaviorSubject } from 'rxjs';
 import swal from 'sweetalert2';
 import { GlobalService } from './global.service';
+import {ethers} from 'ethers';
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +18,19 @@ export class Web3ServiceService {
   }
 
   async loadMetaMask() {
+
     if (window.ethereum) {
       this.web3 = new Web3(window.ethereum);
       try {
+        const _provider = new ethers.BrowserProvider(window.ethereum)
+        if((await _provider.getNetwork()).chainId != BigInt(11155111)){
+          await _provider.send('wallet_switchEthereumChain', [{chainId :`0x${(11155111).toString(16)}`}]);
+        }
         await window.ethereum.request({ method: 'eth_requestAccounts' });
         const accounts = await this.web3.eth.getAccounts();
         this.account.next(accounts[0]);
         console.log(accounts[0]);
+        
         return 1;
       } catch (error) {
         console.error('User denied account access', error);
@@ -75,5 +82,4 @@ export class Web3ServiceService {
         }
       })
   }
- 
 }
