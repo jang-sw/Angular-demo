@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GlobalService } from '../../services/global.service';
+import { PageToggleService } from '../../services/page-toggle.service';
 
 @Component({
   selector: 'app-board',
@@ -13,7 +14,7 @@ export class BoardComponent implements OnInit {
   bordType = '';
   canCreate = false;
 
-  constructor(private route: ActivatedRoute, private globalService: GlobalService) {
+  constructor(private route: ActivatedRoute, private globalService: GlobalService, private pageToggleService: PageToggleService) {
 
     
 
@@ -29,5 +30,8 @@ export class BoardComponent implements OnInit {
       }
     });
   }
-
+  goWrite(){
+    if(!this.bordType) return;
+    this.pageToggleService.goPage(`/board/${this.bordType}/write`);
+  }
 }

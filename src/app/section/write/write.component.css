@@ -1,0 +1,47 @@
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #e6f7ff;
+    overflow-y: auto;
+}
+.main-content h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+.form-group input[type="text"]{
+    width: 98%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+.form-actions button {
+    padding: 10px 15px;
+    margin-left: 10px;
+    background-color: #87cefa;
+    border: 1px solid #87cefa;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.form-actions button:hover {
+    background-color: #00bfff;
+}
+.ck-editor__editable {
+    height: 400px;
+}

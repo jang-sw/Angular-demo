@@ -27,7 +27,7 @@ export class LoginModalComponent implements OnInit{
 
   @Output() closeEvent = new EventEmitter()
 
-  constructor(private pageToggleService: PageToggleService ,private element: ElementRef, private web3Service: Web3ServiceService, private fb: FormBuilder, private globalService: GlobalService) {
+  constructor(private pageToggleService: PageToggleService, private element: ElementRef, private web3Service: Web3ServiceService, private fb: FormBuilder, private globalService: GlobalService) {
     this.serverUrl = conf.server;
     let lang: any = !sessionStorage.getItem('lang') ? 'ko' : sessionStorage.getItem('lang');
     this.title = lang == 'ko' ? '로그인' : lang == 'en' ? 'Sign In' : 'ログイン'

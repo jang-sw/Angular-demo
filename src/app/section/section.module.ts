@@ -10,6 +10,8 @@ import { JoinModalComponent } from '../modal/join-modal/join-modal.component';
 import { LoginModalComponent } from '../modal/login-modal/login-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MyPageComponent } from './my-page/my-page.component';
+import { WriteComponent } from './write/write.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 const routes: Routes = [
   {
@@ -32,6 +34,11 @@ const routes: Routes = [
     pathMatch: 'full',
     component: MyPageComponent,
   },
+  {
+    path:'board/:type/write',
+    pathMatch: 'full',
+    component: WriteComponent,
+  },
 ];
 
 
@@ -45,10 +52,12 @@ const routes: Routes = [
     DetailComponent,
     BoardComponent,
     MyPageComponent,
+    WriteComponent,
   ],
   imports: [
     ReactiveFormsModule,
     CommonModule,
+    CKEditorModule,
     RouterModule.forChild(routes),
     
   ],

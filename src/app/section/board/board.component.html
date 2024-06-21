@@ -61,7 +61,7 @@
         </tbody>
     </table>
     <div>
-        <button *ngIf="canCreate" class="create-btn">작성</button>
+        <button (click)="goWrite()" *ngIf="canCreate" class="create-btn" >작성</button>
     </div>   
     <div class="pagination notranslate">
         <button>Prev</button>
