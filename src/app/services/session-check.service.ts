@@ -27,7 +27,6 @@ export class SessionCheckService {
       await this.web3Service.loadMetaMask();
     }
     const parsedUserInfo: any = qs.parse(userInfo ?? '');
-    console.log(parsedUserInfo)
     axios.get(
       `${this.serverUrl}/api/account/chkUserInfo`,
       {

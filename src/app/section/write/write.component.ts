@@ -127,9 +127,9 @@ export class WriteComponent implements OnInit {
 	}
     const parsedUserInfo: any = qs.parse(userInfo ?? '');
 	
-	let contentOri = this.form.get('content')?.value
-	let content = contentOri.replace(/<[^>]*>?/g, ' ');
-	let title = this.form.get('title')?.value
+	let contentOri = this.form.get('content')?.value.trim();
+	let content = contentOri.replace(/<[^>]*>?/g, ' ').trim();
+	let title = this.form.get('title')?.value.trim();
 	let type = 'board'
 	let subType = this.boardType;
 	let nickname = parsedUserInfo['nickname'];

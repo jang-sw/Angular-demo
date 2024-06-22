@@ -25,7 +25,7 @@ const routes: Routes = [
     component: AboutComponent,
   },
   {
-    path:'board/:type',
+    path:'board/:type/:page',
     pathMatch: 'full',
     component: BoardComponent,
   },
@@ -38,6 +38,11 @@ const routes: Routes = [
     path:'board/:type/write',
     pathMatch: 'full',
     component: WriteComponent,
+  },
+  {
+    path:'detail/:type/:contentId',
+    pathMatch: 'full',
+    component: DetailComponent,
   },
 ];
 

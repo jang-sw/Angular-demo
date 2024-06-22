@@ -26,7 +26,7 @@ export class MenuComponent implements OnInit {
       this.language = language;
       this.notice_btn = this.language == 'ko' ? '공지사항' : this.language == 'en' ? 'Notice' : 'お知らせ';
       this.openForum_btn = this.language == 'ko' ? '자유게시판' : this.language == 'en' ? 'Open Forum' : 'フリーボード';
-      this.search = this.language == 'ko' ? '검색' : this.language == 'en' ? 'Search' : '検索';
+      this.search = this.language == 'ko' ? '이동' : this.language == 'en' ? 'Move' : '移動';
     });
   }
   goPage(target:string){
@@ -34,6 +34,6 @@ export class MenuComponent implements OnInit {
   }
 
   goPageWithType(target:string, type:string){
-    this.pageToggleService.goToPageWithType(target, type)
+    this.pageToggleService.goWithPage(target, type, 1)
   }
 }

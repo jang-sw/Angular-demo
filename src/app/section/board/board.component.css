@@ -30,7 +30,7 @@ th {
     justify-content: center;
     margin-top: 20px;
 }
-.pagination button {
+.page-btn {
     padding: 10px 15px;
     margin: 0 5px;
     background-color: #87cefa;
@@ -40,8 +40,18 @@ th {
     cursor: pointer;
     transition: background-color 0.3s;
 }
-.pagination button:hover {
+.page-btn:hover {
     background-color: #00bfff;
+}
+.page-btn-activate {
+    padding: 10px 15px;
+    margin: 0 5px;
+    background-color: #00bfff;
+    border: 1px solid #00bfff;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 input[type="text"] {
     width: calc(65% - 10px);

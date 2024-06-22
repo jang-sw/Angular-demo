@@ -70,8 +70,6 @@ export class JoinModalComponent implements OnInit {
    
     let nicknameRegex: RegExp = /^[a-zA-Z]{3,16}$/;
     let passwordRegex: RegExp = /^[a-zA-Z0-9]{8,16}$/;
-    console.log(nicknameRegex.test(this.signupForm.get('nickname')?.value) )
-    console.log(passwordRegex.test(this.signupForm.get('password')?.value))
     if(!nicknameRegex.test(this.signupForm.get('nickname')?.value) || !passwordRegex.test(this.signupForm.get('password')?.value)){
       this.isJoining = false;
       swal.fire({

@@ -1,1 +1,23 @@
-<p>detail works!</p>
+<div class="post-detail">
+    <h2>{{title}}</h2>
+    <p class = "notranslate" style="display:inline">
+        <strong id="writer" >Author:</strong> <span class = "notranslate"> {{author}} </span>
+        <span style="float: right;"><u><strong id="like" class = "notranslate" style="cursor: pointer;">Likes:</strong></u> {{likes}} <span style="color:#db0909">|</span> <strong id="view" class = "notranslate">Views:</strong> {{views   }}</span>
+    </p>
+    <div id="content" [innerHTML]="contentOri">
+        
+    </div>
+    <div class="actions" *ngIf="accountId == userId" >
+        <button id="content-update-btn" class = "notranslate">수정</button>
+        <button id="content-delete-btn" class = "notranslate">삭제</button>
+    </div>
+    <div class="comments">
+        <div class="comment" *ngFor="let comment of comments">
+            <p><strong class = "notranslate">{{comment.nickname}}: </strong>{{comment.comment}} <span *ngIf="comment.accountId == userId" style="color:red; cursor:pointer">x</span></p>
+        </div>
+    </div>
+    <div class="comment-input">
+        <input type="text" >
+        <button id="comment-insert-btn" class = "notranslate">작성</button>
+    </div>
+</div>

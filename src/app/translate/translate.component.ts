@@ -37,7 +37,6 @@ export class TranslateComponent implements OnInit {
     }else{
       this.globalService.changeLanguage('en')
     }
-    console.log(this.globalService.getLanguage());
     this.language = this.globalService.getLanguage()
 
   }

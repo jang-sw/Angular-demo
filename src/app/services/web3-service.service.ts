@@ -29,7 +29,6 @@ export class Web3ServiceService {
         await window.ethereum.request({ method: 'eth_requestAccounts' });
         const accounts = await this.web3.eth.getAccounts();
         this.account.next(accounts[0]);
-        console.log(accounts[0]);
         
         return 1;
       } catch (error) {
