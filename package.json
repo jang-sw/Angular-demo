@@ -22,6 +22,7 @@
     "@ckeditor/ckeditor5-build-classic": "^41.4.2",
     "axios": "^1.7.2",
     "ckeditor5-custom-build": "file:src/assets/ckeditor",
+    "ethers": "^6.13.1",
     "kyoucre": "file:",
     "qs": "^6.12.1",
     "rxjs": "~7.8.0",
