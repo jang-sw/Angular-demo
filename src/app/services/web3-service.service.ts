@@ -23,8 +23,8 @@ export class Web3ServiceService {
       this.web3 = new Web3(window.ethereum);
       try {
         const _provider = new ethers.BrowserProvider(window.ethereum)
-        if((await _provider.getNetwork()).chainId != BigInt(11155111)){
-          await _provider.send('wallet_switchEthereumChain', [{chainId :`0x${(11155111).toString(16)}`}]);
+        if((await _provider.getNetwork()).chainId != BigInt(1)){
+          await _provider.send('wallet_switchEthereumChain', [{chainId :`0x${(1).toString(16)}`}]);
         }
         await window.ethereum.request({ method: 'eth_requestAccounts' });
         const accounts = await this.web3.eth.getAccounts();
