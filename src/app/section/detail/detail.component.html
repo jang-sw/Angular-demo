@@ -4,7 +4,7 @@
         <strong id="writer" >Author:</strong> <span class = "notranslate"> {{author}} </span>
         <span style="float: right;"><strong id="like" class = "notranslate" style="cursor: pointer;"><u [style.color]="liked > 0 ? 'red':'black'" (click)="toggleLike(0)">Likes</u>:</strong> {{likes}} <span style="color:#db0909">|</span> <strong id="view" class = "notranslate">Views:</strong> {{views   }}</span>
     </p>
-    <div id="content" [innerHTML]="contentOri">
+    <div id="content" style="border: solid 1px #c3d0d2;" [innerHTML]="contentOri">
     </div>  
     <div class="actions" *ngIf="accountId == userId" >
         <button id="content-update-btn" class = "notranslate" (click)="goModi()">수정</button>
