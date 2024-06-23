@@ -1,13 +1,19 @@
 <div class="main-content">
-    <h2 style="margin: 0 0 20px 0px;" class="notranslate" id="board-title">{{boardTitle}}</h2>
+    <h2 *ngIf="(bordType == 'notice' || bordType == 'free')" style="margin: 0 0 20px 0px;" class="notranslate" id="board-title" [innerHTML]="boardTitle"></h2>
+    <div *ngIf="(bordType != 'notice' && bordType != 'free')" class="notranslate" style="margin: 0 0 20px 0px;">
+        <strong style="font-size: x-large;">NFT </strong>
+        <u (click)="openEtherScan(boardTitle)" style="cursor: pointer; font-size: large;" [innerText]="boardTitle"></u>
+        <span style="font-size: larger;"> Community</span>
+    </div>
+
     <div class="notranslate" style="display: flex;  margin-bottom: 10px;">
-        <select class="search-select">
-            <option *ngIf="(bordType != 'notice')">Author</option>
-            <option>Title</option>
-            <option>Content</option>
+        <select class="search-select" (change)="setSelect($event)">
+            <option value="title" selected>Title</option>
+            <option *ngIf="(bordType != 'notice')" value="author">Author</option>
+            <option value="content">Content</option>
         </select>
-        <input type="text"/>
-        <button class="search-btn">SEARCH</button>
+        <input id="searchInput" #searchInput type="text" [value]="keyword" />
+        <button class="search-btn" (click)="search(searchInput.value)">SEARCH</button>
     </div>
     
     <table>
@@ -19,10 +25,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let board of boards" (click)="goDetail(board.contentId)">
+            <tr *ngFor="let board of boards" (click)="goDetail(board.contentId)" >
                 <td>{{board.title}}</td>
                 <td class="notranslate">{{board.author}}</td>
                 <td>{{board.created}}</td>
+            </tr>
+            <tr *ngIf="boards.length == 0 && !isSearching">
+                <td colspan="3" class="notranslate" style="text-align: center;">No Content Yet</td>
+            </tr>
+            <tr *ngIf="isSearching">
+                <td colspan="3" class="notranslate" style="text-align: center;">...</td>
             </tr>
         </tbody>
     </table>

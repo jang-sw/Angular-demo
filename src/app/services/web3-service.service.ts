@@ -81,4 +81,46 @@ export class Web3ServiceService {
         }
       })
   }
+
+  
+  async checkNFTOwnership(contractAddress: string): Promise<number> {
+    if (!this.web3) {
+      await this.loadMetaMask()
+    }
+    if(!this.web3){
+      return -1;
+    }
+    if(!sessionStorage.getItem('token') || !sessionStorage.getItem('userInfo')) {
+      return -2
+    }
+    const contractABI = [
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "owner",
+            "type": "address"
+          }
+        ],
+        "name": "balanceOf",
+        "outputs": [
+          {
+            "name": "balance",
+            "type": "uint256"
+          }
+        ],
+        "type": "function"
+      }
+    ];
+
+    const contract = new this.web3!.eth.Contract(contractABI, contractAddress);
+
+    try {
+      const balance: string = await contract.methods['balanceOf'](this.account.value).call();
+      return parseInt(balance) > 0 ? 1 : 0;
+    } catch (error) {
+      console.error('Error checking NFT ownership', error);
+      return -3;
+    }
+  }
 }

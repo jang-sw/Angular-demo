@@ -3,11 +3,11 @@
     <h2 id="content-editor-title" class="notranslate">{{title}}</h2>
     <div class="form-group">
         <label id="title-label" for="title">{{titleInput}}</label>
-        <input type="text" id="title" name="title" formControlName="title">
+        <input type="text" id="title" name="title" formControlName="title" [(ngModel)]="titleData">
     </div>
     <div id="content-editor" class="form-group notranslate">
         <label id="editor-label" for="editor">{{contentInput}}</label>
-        <ckeditor [editor]="Editor" [config]="conf" formControlName="content"></ckeditor>
+        <ckeditor [editor]="editor" [config]="conf" formControlName="content" [(ngModel)]="editorData"></ckeditor>
     </div>
     <div class="form-group notranslate">
         <label>

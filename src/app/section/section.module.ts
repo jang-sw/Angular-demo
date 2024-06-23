@@ -8,10 +8,11 @@ import { BoardComponent } from './board/board.component';
 import { DetailComponent } from './detail/detail.component';
 import { JoinModalComponent } from '../modal/join-modal/join-modal.component';
 import { LoginModalComponent } from '../modal/login-modal/login-modal.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MyPageComponent } from './my-page/my-page.component';
 import { WriteComponent } from './write/write.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { ModiComponent } from './modi/modi.component';
 
 const routes: Routes = [
   {
@@ -35,7 +36,7 @@ const routes: Routes = [
     component: MyPageComponent,
   },
   {
-    path:'board/:type/write',
+    path:'write/board/:type',
     pathMatch: 'full',
     component: WriteComponent,
   },
@@ -43,6 +44,11 @@ const routes: Routes = [
     path:'detail/:type/:contentId',
     pathMatch: 'full',
     component: DetailComponent,
+  },
+  {
+    path:'modi/:type/:contentId',
+    pathMatch: 'full',
+    component: ModiComponent,
   },
 ];
 
@@ -58,9 +64,11 @@ const routes: Routes = [
     BoardComponent,
     MyPageComponent,
     WriteComponent,
+    ModiComponent,
   ],
   imports: [
     ReactiveFormsModule,
+    FormsModule,
     CommonModule,
     CKEditorModule,
     RouterModule.forChild(routes),

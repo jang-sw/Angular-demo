@@ -2,22 +2,21 @@
     <h2>{{title}}</h2>
     <p class = "notranslate" style="display:inline">
         <strong id="writer" >Author:</strong> <span class = "notranslate"> {{author}} </span>
-        <span style="float: right;"><u><strong id="like" class = "notranslate" style="cursor: pointer;">Likes:</strong></u> {{likes}} <span style="color:#db0909">|</span> <strong id="view" class = "notranslate">Views:</strong> {{views   }}</span>
+        <span style="float: right;"><strong id="like" class = "notranslate" style="cursor: pointer;"><u [style.color]="liked > 0 ? 'red':'black'" (click)="toggleLike(0)">Likes</u>:</strong> {{likes}} <span style="color:#db0909">|</span> <strong id="view" class = "notranslate">Views:</strong> {{views   }}</span>
     </p>
     <div id="content" [innerHTML]="contentOri">
-        
-    </div>
+    </div>  
     <div class="actions" *ngIf="accountId == userId" >
-        <button id="content-update-btn" class = "notranslate">수정</button>
-        <button id="content-delete-btn" class = "notranslate">삭제</button>
+        <button id="content-update-btn" class = "notranslate" (click)="goModi()">수정</button>
+        <button id="content-delete-btn" class = "notranslate" (click)="deleteContent(0)">삭제</button>
     </div>
     <div class="comments">
         <div class="comment" *ngFor="let comment of comments">
-            <p><strong class = "notranslate">{{comment.nickname}}: </strong>{{comment.comment}} <span *ngIf="comment.accountId == userId" style="color:red; cursor:pointer">x</span></p>
+            <p><strong class = "notranslate">{{comment.nickname}}: </strong><span [innerHTML]="comment.comment"></span> <span (click)="deleteComment(comment.commentId, 0)" *ngIf="comment.accountId == userId" style="color:red; cursor:pointer" > x</span></p>
         </div>
     </div>
     <div class="comment-input">
-        <input type="text" >
-        <button id="comment-insert-btn" class = "notranslate">작성</button>
+        <input type="text" id="comment" [(ngModel)]="comment" >
+        <button id="comment-insert-btn" class = "notranslate" (click)="saveComment(0)">작성</button>
     </div>
 </div>

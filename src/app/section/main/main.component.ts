@@ -21,7 +21,7 @@ export class MainComponent {
     let userInfo = sessionStorage.getItem('userInfo')
     
     if(token && userInfo ){
-      this.sessionCheckService.sessionCheck('/');
+      this.sessionCheckService.sessionCheck('/', 0);
     }
     
   }

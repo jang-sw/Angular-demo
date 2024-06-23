@@ -29,7 +29,7 @@ export class LoginModalComponent implements OnInit{
 
   constructor(private pageToggleService: PageToggleService, private element: ElementRef, private web3Service: Web3ServiceService, private fb: FormBuilder, private globalService: GlobalService) {
     this.serverUrl = conf.server;
-    let lang: any = !sessionStorage.getItem('lang') ? 'ko' : sessionStorage.getItem('lang');
+    const lang: any = !sessionStorage.getItem('lang') ? 'ko' : sessionStorage.getItem('lang');
     this.title = lang == 'ko' ? '로그인' : lang == 'en' ? 'Sign In' : 'ログイン'
     this.nicknameInput = lang == 'ko' ? '닉네임' : lang == 'en' ? 'Nickname' : 'ニックネーム'
     this.passwordInput = lang == 'ko' ? '비밀번호' : lang == 'en' ? 'Password' : 'パスワード'
@@ -53,7 +53,7 @@ export class LoginModalComponent implements OnInit{
   }
   async submit(){
     this.isSignining = true;
-    let language = this.globalService.getLanguage();
+    const language = this.globalService.getLanguage();
     
     if(!this.isConnecting || !this.web3Service.account.value){
       this.isSignining = false;
@@ -133,7 +133,7 @@ export class LoginModalComponent implements OnInit{
     ).then(async (res)=>{
       if(res.data.result == 1){
         if(!res.data.data){
-          let language = this.globalService.getLanguage();
+          const language = this.globalService.getLanguage();
           await swal.fire({
             html: '<span class="notranslate">' + (language == 'ko' ? '해당 지갑에 가입된 계정이 없습니다.' : language == 'en' ? 'There is no account registered with that wallet.' : 'そのウォレットには登録されたアカウントがありません。') + '</span>',
             icon: 'warning',

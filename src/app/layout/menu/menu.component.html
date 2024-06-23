@@ -2,9 +2,13 @@
     <button id="about-btn" (click)="goPage('about')">About</button>
     <button id="notice-btn" (click)="goPageWithType('board', 'notice')">{{notice_btn}}</button>
     <button id="openForum-btn" (click)="goPageWithType('board', 'free')">{{openForum_btn}}</button>
-    <div style="display: flex; margin-top: 20px;">
-        <input id="search-input" type="text" placeholder="Input your NFT Contract Address">
-        <button id="search" class="search">{{search}}</button>
+    
+    <hr style="margin-top: 20px;"/>
+    <strong style="color: rgb(0, 40, 76); ">Navigate to the NFT community</strong>
+    <div style="display: flex; margin-top: 10px;">
+        
+        <input id="search-input" type="text" placeholder="Input your NFT Contract Address" [(ngModel)] = "keyowrd">
+        <button id="search" class="search" (click)="goPageWithType('board', keyowrd)">{{search}}</button>
     </div>
     
 </div>

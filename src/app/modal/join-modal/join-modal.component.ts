@@ -30,7 +30,7 @@ export class JoinModalComponent implements OnInit {
 
   constructor(private element: ElementRef, private web3Service: Web3ServiceService, private fb: FormBuilder, private globalService: GlobalService) {
     this.serverUrl = conf.server;
-    let language = globalService.getLanguage();
+    const language = globalService.getLanguage();
     this.submitBtn = language == 'ko' ? '가입' : language == 'en' ? 'Sign Up' : '登録'
     this.title = language == 'ko' ? '회원 가입' : language == 'en' ? 'Sign Up' : '会員登録'
     this.nicknameInput = language == 'ko' ? '닉네임 (알파벳 3글자 이상 16글자 이하)' : language == 'en' ? 'Nickname (3 to 16 alphabetic characters)' : 'ニックネーム（アルファベット3文字以上16文字以下）'
@@ -57,7 +57,7 @@ export class JoinModalComponent implements OnInit {
   }
   async submit(){
     this.isJoining = true;
-    let language = this.globalService.getLanguage();
+    const language = this.globalService.getLanguage();
     if(!this.web3Service.account?.value || !this.web3Service.sign){
       this.isJoining = false;
       swal.fire({
@@ -68,8 +68,8 @@ export class JoinModalComponent implements OnInit {
       return;
     }
    
-    let nicknameRegex: RegExp = /^[a-zA-Z]{3,16}$/;
-    let passwordRegex: RegExp = /^[a-zA-Z0-9]{8,16}$/;
+    const nicknameRegex: RegExp = /^[a-zA-Z]{3,16}$/;
+    const passwordRegex: RegExp = /^[a-zA-Z0-9]{8,16}$/;
     if(!nicknameRegex.test(this.signupForm.get('nickname')?.value) || !passwordRegex.test(this.signupForm.get('password')?.value)){
       this.isJoining = false;
       swal.fire({
@@ -188,7 +188,7 @@ export class JoinModalComponent implements OnInit {
     ).then(async (res)=>{
       if(res.data.result == 1){
         if(res.data.data > 0){
-          let language = this.globalService.getLanguage();
+          const language = this.globalService.getLanguage();
           await swal.fire({
             html: '<span class="notranslate">' + (language == 'ko' ? '이미 가입된 지갑입니다.' : language == 'en' ? 'You have already registered with that wallet.' : 'そのウォレットでは既に登録されています。') + '</span>',
             icon: 'warning',

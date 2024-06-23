@@ -24,7 +24,7 @@ export class MyPageComponent implements OnInit{
     
   }
   async ngOnInit() {
-    await this.sessionCheckService.sessionCheck('')
+    await this.sessionCheckService.sessionCheck('', 0)
     
     let userInfo = sessionStorage.getItem('userInfo')
     const parsedUserInfo: any = qs.parse(userInfo ?? '');

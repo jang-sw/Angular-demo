@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageToggleService } from '../../services/page-toggle.service';
 import { GlobalService } from '../../services/global.service';
+import swal from 'sweetalert2'; 
 
 @Component({
   selector: 'app-menu',
@@ -12,7 +13,7 @@ export class MenuComponent implements OnInit {
   notice_btn;
   openForum_btn;
   search;
-  
+  keyowrd = '';
   constructor(private pageToggleService: PageToggleService, private globalService: GlobalService){
     this.language = sessionStorage.getItem('lang') == null ? 'ko' : sessionStorage.getItem('lang');
     this.notice_btn = this.language == 'ko' ? '공지사항' : this.language == 'en' ? 'Notice' : 'お知らせ';
@@ -34,6 +35,18 @@ export class MenuComponent implements OnInit {
   }
 
   goPageWithType(target:string, type:string){
+
+    if(type != 'notice' && type != 'free'){
+      const regex = /^0x[a-fA-F0-9]{40}$/;
+      if(!regex.test(type)){
+        swal.fire({
+          html: '<span class="notranslate">Please Check NFT Contract Address</span>',
+          icon: 'warning',
+        });
+        return;
+      }
+    }
+
     this.pageToggleService.goWithPage(target, type, 1)
   }
 }

@@ -14,8 +14,8 @@ export class SessionCheckService {
 
   constructor(private pageToggleService: PageToggleService, private globalService: GlobalService, private web3Service: Web3ServiceService) {
     this.serverUrl = conf.server;
-   }
-   async sessionCheck(target: string){
+  }
+  async sessionCheck(target: string, isRetry:number){
     let token = sessionStorage.getItem('token')
     let userInfo = sessionStorage.getItem('userInfo')
     if(!token || !userInfo ){
@@ -55,7 +55,50 @@ export class SessionCheckService {
       }
     }).catch(async (err) =>{
         this.pageToggleService.goPage('/login')
+        if(err.response.status == 401  && isRetry != 1){
+          await this.refreshSession()
+          this.sessionCheck(target, 1);
+          return;
+        }
         return;
     })
-   }
+  }
+
+  async refreshSession(){
+    
+    let token = sessionStorage.getItem('token')
+    let userInfo = sessionStorage.getItem('userInfo')
+    if(!token || !userInfo ){
+      this.pageToggleService.goPage('/login')
+      return;
+    }
+    let parsedUserInfo: any = qs.parse(userInfo ?? '');
+
+    await axios.get(
+      `${this.serverUrl}/openApi/account/refresh`,
+      {
+        headers: { 
+          'content-type': 'application/x-www-form-urlencoded' 
+          , 'accountId' : parsedUserInfo['accountId']
+          , 'Authorization': token
+        }
+      }
+    ).then(async (res)=>{
+      if(res.data.result == 1){
+        sessionStorage.setItem('token' ,res.headers['authorization']);
+        return;
+      }else{
+        sessionStorage.removeItem('token')
+        sessionStorage.removeItem('userInfo')
+        this.pageToggleService.goPage('/login')
+        return;
+      }
+    }).catch(async (err) =>{
+        console.log(err)
+        sessionStorage.removeItem('token')
+        sessionStorage.removeItem('userInfo')
+        this.pageToggleService.goPage('/login')
+        return;
+    })
+  }
 }
