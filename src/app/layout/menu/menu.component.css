@@ -2,7 +2,9 @@ button{
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
+.sidebar{
+    min-width: 195px;
+}
 .sidebar button {
     display: block;
     height: 40px;
