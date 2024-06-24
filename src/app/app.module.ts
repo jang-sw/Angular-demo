@@ -28,10 +28,5 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor() {
-    const originalStripTrailingSlash = (Location as any).stripTrailingSlash;
-    (Location as any).stripTrailingSlash = function(url: string): string {
-      return url.endsWith('/') && url.length > 1 ? url.slice(0, -1) : url;
-    };
-  }
+  
  }
