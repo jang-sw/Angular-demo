@@ -23,7 +23,7 @@ const routes: Routes = [
   {
     path:'login/',
     pathMatch: 'full',
-    component: MainComponent,
+    redirectTo: 'login',
   },
   {
     path:'about',
@@ -33,7 +33,7 @@ const routes: Routes = [
   {
     path:'about/',
     pathMatch: 'full',
-    component: AboutComponent,
+    redirectTo: 'about',
   },
   {
     path:'board/:type/:page',
@@ -43,7 +43,7 @@ const routes: Routes = [
   {
     path:'board/:type/:page/',
     pathMatch: 'full',
-    component: BoardComponent,
+    redirectTo: 'board/:type/:page',
   },
   {
     path:'',
@@ -53,7 +53,7 @@ const routes: Routes = [
   {
     path:'/',
     pathMatch: 'full',
-    component: MyPageComponent,
+    redirectTo: '',
   },
   {
     path:'write/board/:type',
@@ -63,7 +63,7 @@ const routes: Routes = [
   {
     path:'write/board/:type/',
     pathMatch: 'full',
-    component: WriteComponent,
+    redirectTo: 'write/board/:type',
   },
   {
     path:'detail/:type/:contentId',
@@ -73,7 +73,7 @@ const routes: Routes = [
   {
     path:'detail/:type/:contentId/',
     pathMatch: 'full',
-    component: DetailComponent,
+    redirectTo: 'detail/:type/:contentId',
   },
   {
     path:'modi/:type/:contentId',
@@ -83,7 +83,7 @@ const routes: Routes = [
   {
     path:'modi/:type/:contentId/',
     pathMatch: 'full',
-    component: ModiComponent,
+    redirectTo: 'modi/:type/:contentId',
   },
 ];
 
