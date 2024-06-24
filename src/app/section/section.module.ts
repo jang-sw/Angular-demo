@@ -51,11 +51,6 @@ const routes: Routes = [
     component: MyPageComponent,
   },
   {
-    path:'/',
-    pathMatch: 'full',
-    redirectTo: '',
-  },
-  {
     path:'write/board/:type',
     pathMatch: 'full',
     component: WriteComponent,
