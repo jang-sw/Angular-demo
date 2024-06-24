@@ -21,7 +21,17 @@ const routes: Routes = [
     component: MainComponent,
   },
   {
+    path:'login/',
+    pathMatch: 'full',
+    component: MainComponent,
+  },
+  {
     path:'about',
+    pathMatch: 'full',
+    component: AboutComponent,
+  },
+  {
+    path:'about/',
     pathMatch: 'full',
     component: AboutComponent,
   },
@@ -31,7 +41,17 @@ const routes: Routes = [
     component: BoardComponent,
   },
   {
+    path:'board/:type/:page/',
+    pathMatch: 'full',
+    component: BoardComponent,
+  },
+  {
     path:'',
+    pathMatch: 'full',
+    component: MyPageComponent,
+  },
+  {
+    path:'/',
     pathMatch: 'full',
     component: MyPageComponent,
   },
@@ -41,12 +61,27 @@ const routes: Routes = [
     component: WriteComponent,
   },
   {
+    path:'write/board/:type/',
+    pathMatch: 'full',
+    component: WriteComponent,
+  },
+  {
     path:'detail/:type/:contentId',
     pathMatch: 'full',
     component: DetailComponent,
   },
   {
+    path:'detail/:type/:contentId/',
+    pathMatch: 'full',
+    component: DetailComponent,
+  },
+  {
     path:'modi/:type/:contentId',
+    pathMatch: 'full',
+    component: ModiComponent,
+  },
+  {
+    path:'modi/:type/:contentId/',
     pathMatch: 'full',
     component: ModiComponent,
   },
