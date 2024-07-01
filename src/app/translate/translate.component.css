@@ -6,4 +6,5 @@ select {
     color: #333;
     font-size: 1em;
     margin-right: 5px;
+    cursor: pointer;
 }

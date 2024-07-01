@@ -21,6 +21,9 @@ th, td {
     text-align: left;
     border-bottom: 1px solid #ccc;
 }
+tr{
+    cursor: pointer;
+}
 th {
     background-color: #87cefa;
     color: white;
@@ -79,6 +82,7 @@ input[type="text"] {
     margin-right: 10px;
     border-radius: 4px;
     border-color: #ccc;
+    cursor:pointer;
 }
 .create-btn{
     float:right;
