@@ -1,6 +1,9 @@
 # Angular-demo
-NFT community frontend Demo using Angular
 
-Angularを活用したNFTコミュニティデモ
+다국어 web3 커뮤니티를 상정하고 제작한 angular 데모 frontend 어플리케이션
 
-Angular를 활용한 NFT 커뮤니티 Demo
+A angular demo frontend application designed with the multilingual web3 community in mind
+
+多言語web3コミュニティを念頭に置いて制作したangularデモfrontendアプリケーション
+
+
