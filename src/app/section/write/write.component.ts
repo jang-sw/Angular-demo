@@ -85,6 +85,9 @@ export class WriteComponent implements OnInit {
 				'tableCellProperties',
 				'tableProperties'
 			]
+		},
+		mediaEmbed: {
+			previewsInData: true 
 		}
     };
  
