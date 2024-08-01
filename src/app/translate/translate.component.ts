@@ -11,8 +11,6 @@ export class TranslateComponent implements OnInit {
  
   language:string = 'ko';
 
- 
-
   constructor(private globalService: GlobalService){ 
 
   }
@@ -27,9 +25,6 @@ export class TranslateComponent implements OnInit {
     script.async = true;
     script.defer = true;
     document.head.appendChild(script);
-
-    (window as any).googleTranslateElementInit = this.googleTranslateElementInit;
-
     if(!sessionStorage.getItem("lang") || sessionStorage.getItem("lang") == 'ko'){
       this.globalService.changeLanguage('ko')
     }else if(sessionStorage.getItem("lang") == 'ja'){
@@ -37,14 +32,26 @@ export class TranslateComponent implements OnInit {
     }else{
       this.globalService.changeLanguage('en')
     }
-    this.language = this.globalService.getLanguage()
+    this.language = this.globalService.getLanguage();
 
+    (window as any).googleTranslateElementInit = this.googleTranslateElementInit;
+
+    
   }
 
   googleTranslateElementInit(): void {
     new (window as any).google.translate.TranslateElement(
-      {pageLanguage:  'ko' ,includedLanguages: 'en,ja,ko'}
+      {includedLanguages: 'en,ja,ko'}
       , 'google_translate_element');
+      
+      const gtcombo: any = document.querySelector('.goog-te-combo');
+      if (gtcombo == null) {
+        alert("Error: Could not find Google translate Combolist.");
+      }
+      gtcombo.value = this.language; 
+      gtcombo.dispatchEvent(new Event('change')); 
+      this.language = this.language;
+      
   }
 
   translate(event: any){
