@@ -8,6 +8,7 @@ import { SessionCheckService } from '../../services/session-check.service';
 import { PageToggleService } from '../../services/page-toggle.service';
 import { GlobalService } from '../../services/global.service';
 import { Web3ServiceService } from '../../services/web3-service.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-detail',
@@ -20,7 +21,7 @@ export class DetailComponent implements OnInit {
   boardType: string = ''; 
   isProcessing = false;
   author = ''
-  contentOri = ''
+  contentOri: SafeHtml = ''
   liked = 0
   likes = 0
   views = 0
@@ -37,7 +38,7 @@ export class DetailComponent implements OnInit {
   }[]  = [];
 
 
-  constructor(private route: ActivatedRoute, private globalService: GlobalService, private pageToggleService: PageToggleService, private sessionCheckService : SessionCheckService, private web3Service: Web3ServiceService){
+  constructor(private sanitizer: DomSanitizer, private route: ActivatedRoute, private globalService: GlobalService, private pageToggleService: PageToggleService, private sessionCheckService : SessionCheckService, private web3Service: Web3ServiceService){
     this.serverUrl = conf.server;
   }
    ngOnInit() {
@@ -98,7 +99,7 @@ export class DetailComponent implements OnInit {
         return;
       }
       this.author = res.data.data.author
-      this.contentOri = res.data.data.contentOri
+      this.contentOri = this.sanitizer.bypassSecurityTrustHtml(res.data.data.contentOri);
       this.liked = res.data.data.liked
       this.likes = res.data.data.likes
       this.views = res.data.data.views
