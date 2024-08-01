@@ -37,7 +37,7 @@ export class TranslateComponent implements OnInit {
     (window as any).googleTranslateElementInit = this.googleTranslateElementInit;
 
     
-  }
+  } 
 
   googleTranslateElementInit(): void {
     new (window as any).google.translate.TranslateElement(
