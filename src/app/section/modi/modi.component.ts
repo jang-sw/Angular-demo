@@ -89,6 +89,9 @@ export class ModiComponent implements OnInit {
 				'tableCellProperties',
 				'tableProperties'
 			]
+		},
+		mediaEmbed: {
+			previewsInData: true 
 		}
     };
     constructor(private route: ActivatedRoute, private globalService: GlobalService, private fb: FormBuilder, private pageToggleService: PageToggleService, private sessionCheckService: SessionCheckService, private web3Service: Web3ServiceService){

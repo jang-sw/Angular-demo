@@ -48,7 +48,7 @@ export class TranslateComponent implements OnInit {
       if (gtcombo == null) {
         alert("Error: Could not find Google translate Combolist.");
       }
-      gtcombo.value = this.globalService.getLanguage(); 
+      gtcombo.value = sessionStorage.getItem("lang") ? sessionStorage.getItem("lang") : 'ko'
       gtcombo.dispatchEvent(new Event('change')); 
       
   }
